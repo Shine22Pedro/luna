@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav {
+    width: 100%;
+    position: fixed;
+    top: 4%;
+    left: 56%;
+    color: #fff;
+    padding: 20px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 150px;
+    position: absolute;
+    top: 2px;
+    color: #fff;
+    left: 10px;
+}
+nav ul li {
+    list-style: none;
+    color: #fff;
+    display: inline-block;
+    margin-left: 40px;
+}
+nav ul li a {
+   text-decoration: none;
+   font-family: Arial;
+   font-weight: 900;
+   color: #fff;
+   font-size: 17px;
+}
+
+nav ul li a:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+
+.promise h1 {
+    font-size: 60px;
+    color: #fff;
+    font-family: Arial;
+    text-align: left;
+    right: 1440px;
+    top: 280px;
+    position: fixed;
+    font-style: normal;
+}
+
+.promise a {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+    font-family: Arial;
+    font-style: normal;
+    text-align: left;
+    right: 950px;
+    top: 400px;
+    position: fixed;
+}
+
+.offer h1 {
+    font-size: 60px;
+    color: #fff;
+    font-family: Arial;
+    transition: 0.5s;
+    text-align: left;
+    right: 1460px;
+    top: 280px;
+    position: fixed;
+    font-style: normal;
+}
+
+.offer a {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+    font-family: Arial;
+    transition: 0.5s;
+    font-style: normal;
+    text-align: left;
+    right: 1450px;
+    top: 400px;
+    position: fixed;
+}
+
+.support h1 {
+    font-size: 60px;
+    font-family: Arial;
+    color: #fff;
+    transition: 0.5s;
+    right: 1350px;
+    top: 280px;
+    position: fixed;
+    text-align: left;
+    font-style: normal;
+}
+
+.support a {
+    font-size: 30px;
+    color: #fff;
+    transition: 0.5s;
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    right: 1180px;
+    top: 380px;
+    position: fixed;
+    font-family: Arial;
+}
+
+.made h1 {
+    font-size: 15px;
+    color: #fff;
+    position: fixed;
+    transition: 0.5s;
+    font-weight: 600;
+    font-family:Arial;
+    font-style: normal;
+    left: 20px;
+    bottom: 20px;
+
+}
+
+body {
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.main-content {
+    color: #fff;
+    position: absolute;
+    font-family: Arial;
+    font-weight: 900;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+}
+
+    .main-content h1 {
+        font-size: 3rem;
+    }
+
+    .main-content p {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
+
+.gradient-btn {
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    color: #fff;
+    background-image: linear-gradient( to right, #4162cf 0%, #0072ff 51%, #4162cf 100% );
+    border-radius: 10px;
+    background-size: 200% auto;
+    transition: 0.3s ease-in-out;
+}
+
+.main-content .gradient-btn {
+    width: 200px;
+    height: 45px;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+}
+
+.gradient-btn:hover {
+    background-position: right center;
+}
+
+@media screen and (max-width: 600px) {
+    .main-content h1 {
+        font-size: 2.25rem;
+    }  

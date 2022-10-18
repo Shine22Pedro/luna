@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link
+      rel="shortcut icon"
+      href="images/logo_white.png"
+      type="images/logo_white.png"
+    />
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>Luna.club</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div class="hero">
+
+        <canvas></canvas>
+        <script>
+            let canvas = document.querySelector("canvas");
+            canvas.style.background = "black";
+            canvas.style.margin = 0;
+            canvas.width = innerWidth;
+            canvas.height = innerHeight;
+
+            canvas.style.width = "100vw";
+            canvas.style.height = "100vh";
+
+            let ctx = canvas.getContext("2d");
+
+            let objects = [];
+
+            let minDistance = 100;
+
+            class Vec2 {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                }
+
+                Distance(vec) {
+                    return Math.sqrt((this.x - vec.x) ** 2 + (this.y - vec.y) ** 2);
+                }
+            }
+
+            const Rand = (max = 1, min = 0) => Math.random() * max + min;
+
+
+            class Point {
+                constructor(pos, r = 2, c = "white", velocity = new Vec2(1, 1)) {
+                    this.pos = pos;
+                    this.radius = r;
+                    this.color = c;
+                    this.velocity = velocity;
+                }
+
+                IsOutCanvas() {
+                    let p = this.pos;
+                    let w = canvas.width;
+                    let h = canvas.height;
+                    return (p.x > w || p.y > h || p.x < 0 || p.y < 0);
+                }
+
+                update() {
+                    this.pos.x += this.velocity.x;
+                    this.pos.y += this.velocity.y;
+
+                    // this.velocity.x *= Rand()>.01?1:-1;
+                    // this.velocity.y *= Rand()>.01?1:-1;
+                    if (this.IsOutCanvas()) {
+                        this.pos = new Vec2(Rand(canvas.width), Rand(canvas.height));
+                        this.velocity.x *= Rand() > .5 ? 1 : -1;
+                        this.velocity.y *= Rand() > .5 ? 1 : -1;
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.fillStyle = this.color;
+                    ctx.ellipse(this.pos.x, this.pos.y, this.radius, this.radius, 0, Math.PI * 2, false);
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+            }
+
+            function init() {
+                for (let i = 0; i < 100; i++) {
+                    objects.push(new Point(new Vec2(Rand(canvas.width), Rand(canvas.height)), 1.4, "#660066", new Vec2(Rand() > .5 ? Rand() : -Rand(), Rand() > .5 ? Rand() : -Rand())));
+
+                }
+            }
+
+
+            function update() {
+                for (const o of objects) {
+                    o.update();
+                }
+            }
+
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (const o of objects) {
+                    o.draw();
+                    for (const o1 of objects) {
+                        if (o1 !== o) {
+                            if (o.pos.Distance(o1.pos) <= minDistance) {
+                                ctx.beginPath();
+                                ctx.moveTo(o.pos.x, o.pos.y);
+                                ctx.lineTo(o1.pos.x, o1.pos.y);
+                                ctx.closePath();
+                                ctx.strokeStyle = "#660066";
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            function loop() {
+                update();
+                draw();
+
+                requestAnimationFrame(loop);
+            }
+
+            init();
+            loop();
+
+        </script>
+        <nav>
+            <ul>
+                <li><a href="promise.html">INÍCIO</a></li>
+                <li><a href="offer.html">CHEATS</a></li>
+                <li><a href="https://www.instagram.com/base_py_go/">CONTATO</a></li>
+                <li><a href="support.html">SHOP</a></li>
+            </ul>
+        </nav>
+
+        <nav class="logo">
+            <img src="images/logo_white.png" onclick="location.href = 'index.html';" style="cursor: pointer;" class="logo">
+        </nav>
+
+
+        <div class="main-content">
+            <h1>Luna.Club</h1>
+
+            <a href="https://lunaclube.sell.app/?browse=products&cursor=" class="gradient-btn">Shop</a>
+        </div>
+        <nav class="made">
+            <h1>&#10084; PedroHenrique#0001</h1>
+        </nav>
+    </div>
+
+ 
+</body>
+</html>
